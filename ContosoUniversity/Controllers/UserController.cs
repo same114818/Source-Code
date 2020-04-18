@@ -28,7 +28,7 @@ namespace ContosoUniversity.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Login(User user)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid)//test
             {
                 var info = _context.User.FirstOrDefault(o => o.UserName == user.UserName && o.Password == user.Password && o.Status == 1);
                 if (info!=null)
@@ -36,7 +36,7 @@ namespace ContosoUniversity.Controllers
                     HttpContext.Session.SetString("user", info.UserName);
                     return RedirectToAction("Index", "Students");
                 }
-                ModelState.AddModelError("", "User or Password Error!");
+                ModelState.AddModelError("", "用户名或密码错误。");
                 return View();
             }
             return View();
@@ -49,27 +49,5 @@ namespace ContosoUniversity.Controllers
             return RedirectToAction("Login", "User");
         }
 
-        public IActionResult Register()
-        {
-            return View();
-        }
-
-        [HttpPost,ActionName("Create")]
-        public async Task<IActionResult> Create ( User user)
-        {
-            if (ModelState.IsValid)
-            {
-                var newUser = _context.User.FirstOrDefault(o => o.UserName == user.UserName);
-                if (newUser!=null)
-                {
-                    ModelState.AddModelError("", "User exists!");
-                    return View("Register");
-                }
-                _context.Add(user);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Login", "User");
-            }
-            return RedirectToAction("Register", "User");
-        }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,6 +14,8 @@ namespace ContosoUniversity.Models
         public string UserName { get; set; }
         [Required]
         public string Password { get; set; }
+        //[Compare("Password",ErrorMessage = "密码必须一致")]
+        //public virtual string RepPassword { get; set; }
         public int Status { get; set; }
     }
 }
