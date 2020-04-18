@@ -65,11 +65,12 @@ namespace ContosoUniversity.Controllers
                     ModelState.AddModelError("", "User exists!");
                     return View("Register");
                 }
+                user.Status = 1;
                 _context.Add(user);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Login", "User");
             }
-            return RedirectToAction("Register", "User");
+            return View("Register");
         }
     }
 }

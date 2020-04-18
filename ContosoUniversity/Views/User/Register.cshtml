@@ -18,16 +18,16 @@
             </div>
             <div class="form-group">
                 <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" id="pwd1" />
+                <input asp-for="Password" class="form-control" id="pwd1" type="password" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label class="control-label">Confrim Password</label>
-                <input class="form-control" id="pwd2"/>
+                <input class="form-control" id="pwd2" type="password"/>
                 <span class="text-danger" id="pwd_err"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" onclick="CheckPassword();"/> 
+                <input type="submit" value="Create" class="btn btn-primary" onclick="return CheckPassword();"/> 
             </div>
         </form>
     </div>
@@ -42,6 +42,5 @@
             $("#pwd_err").text("Password must be same!");
             return false;
         }
-        return;
     }
 </script>
