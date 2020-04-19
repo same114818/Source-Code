@@ -30,10 +30,10 @@
 
     </div>   
 </div>
-<form asp-action="Index" asp-controller="Students">
+<form asp-action="Index" asp-controller="Students" method="get">
     <div>
         <p>
-            Name: <input type="text" />
+            Name: <input type="text" name="strSearch" />
             <input type="submit" value="Search" />
         </p>
     </div>
